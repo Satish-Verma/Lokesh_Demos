@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>My Second Angular_14</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="app/js/angular.js/angular.js"></script>
+        <style>
+            .error {
+                background-color: red;
+            }
+            
+            .warning {
+                background-color: yellow;
+            }
+            
+            .selected {
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+    <body ng-controller="HeaderController">
+        <table>
+            <tr ng-repeat='restaurant in directory' ng-click='selectedRestaurant($index)'
+                ng-class='{selected: $index==selectedRow}'>
+                <td>{{restaurant.name}}</td>
+                <td>{{restaurant.cuisine}}</td>
+            </tr>
+        </table>
+        <script>
+            var myAppModule = angular.module('myApp', []);
+            
+            myAppModule.controller('HeaderController', 
+                function($scope) {
+                    $scope.directory = [{name:'The Handsome Heifer', cuisine:'BBQ'},
+                                        {name: "Green's Green Greens", cuisine:'Salads'},
+                                        {name: 'House of Fine Fish', cuisine:'Sea Food'}];
+                    $scope.selectedRestaurant = function(row) {
+                        $scope.selectedRow = row;
+                    };                   
+                });            
+        </script>
+    </body>
+</html>
