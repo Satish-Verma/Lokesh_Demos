@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>My First Angular</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="app/css/ngclass.css"/>
+    </head>
+    <body ng-controller="myController" ng-cloak ng-init='counter = 0'>
+        <!--<div ng-class="[{'red':className}, className]" ng-if="greetings2">{{greetings2 + ' ' + world}}</div>-->
+<!--        <input type="text" ng-disabled='className' ng-model="counter">
+        <input type="text" ng-model="className" ng-maxlength="5" ng-change='onChange()'>-->
+        <div>{{valueName.myVal}}</div>
+        <!--<button ng-click='addData()'>add Data</button>-->
+        <script src="app/js/angular.js/angular.min.js"></script>
+        <script src="app/js/angular-sanitize/angular-sanitize.min.js"></script>
+        <script src="app/js/controller0.js"></script>
+    </body>
+</html>
