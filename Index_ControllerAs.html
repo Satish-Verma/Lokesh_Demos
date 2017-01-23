@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="scopeInheritance">
+    <head>
+        <title>My First Angular</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="spicy">
+            <div ng-controller="MainController as mainC">
+              <p>Good {{mainC.timeOfDay}}, {{name}}!</p>
+
+              <div ng-controller="ChildController">
+                <p>Good {{mainC.timeOfDay}}, {{name}}!</p>
+
+                <div ng-controller="GrandChildController">
+                  <p>Good {{mainC.timeOfDay}}, {{name}}!</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <script src="app/js/angular.js/angular.min.js"></script>
+        <script src="app/js/controllerAs.js"></script>
+    </body>
+</html>
+
