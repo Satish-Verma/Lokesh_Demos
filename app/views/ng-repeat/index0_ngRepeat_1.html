@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>My First Angular</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="app/css/ngrepeat.css"/>
+    </head>
+    <body ng-controller="myController">
+        <div>
+            I have {{friends.length}} friends. They are:
+            <input type="search" ng-model="q" placeholder="filter friends..." aria-label="filter friends" />
+            <ul class="example-animate-container">
+                <li class="animate-repeat" ng-repeat="friend in friends | filter:q as results">
+                    [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.
+                </li>
+                <li class="animate-repeat" ng-if="results.length == 0">
+                    <strong>No results found...</strong>
+                </li>
+            </ul>
+        </div>
+        <script src="app/js/angular.js/angular.min.js"></script>
+        <script src="app/js/ngrepeat_1.js"></script>
+    </body>
+</html>
