@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>My First Angular</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <base href="/MyFirstAngular/app/views/route/route.html#/" />
+    </head>
+    <body ng-controller="myController" ng-cloak>
+        <a href="/MyFirstAngular/app/views/route/route.html#/partial">{{myVal}}</a>
+        <div ng-view="1"></div>
+        <div ng-view="2"></div>
+        <button ng-click="sendRequest()">Send Request</button>
+        <script src="../../../app/js/angular.js/angular.min.js"></script>
+        <script src="../../../app/js/angular-route/angular-route.js"></script>
+        <script src="route.js"></script>
+    </body>
+</html>
