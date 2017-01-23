@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>My Second Angular_14</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="app/js/angular.js/angular.js"></script>
+        <style>
+            .menu-disabled-true {
+                color: gray;
+            }
+
+            .error {
+                background-color: red;
+            }
+
+            .warning {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body >
+        <div ng-controller="CartController">
+            <div ng-repeat="item in items">
+                <span>{{item.title}}</span>
+                <input ng-model='item.quantity'>
+                <span>{{item.price | currency}}</span>
+                <span>{{item.price * item.quantity | currency}}</span>
+            </div>
+            <div>Total : {{bill.total | currency}}</div>
+            <div>Discount : {{bill.discount | currency}}</div>
+            <div>Subtotal : {{bill.subtotal | currency}}</div>
+        </div>
+        <script>
+                    var myAppModule = angular.module('myApp', []);
+
+                    myAppModule.controller('CartController',
+                            function($scope) {
+                                $scope.bill = {};
+                                $scope.items = [
+                                    {title : 'Paint Pots', quantity : 8, price : 3.95},
+                                    {title : 'Polka Dots', quantity : 17, price : 12.95},
+                                    {title : 'Pebbles', quantity : 5, price : 6.95}
+                                ];
+                                
+                                var calculateTotals = function() {
+                                  var total = 0;
+                                  for (var index = 0, len = $scope.items.length; index < len; ++index) {
+                                      total += $scope.items[index].price * $scope.items[index].quantity;
+                                  }
+                                  $scope.bill.total = total;
+                                  $scope.bill.discount = total > 100 ? 10 : 0;
+                                  $scope.bill.subtotal = total - $scope.bill.discount;
+                                };
+                                
+                                $scope.$watch('items', calculateTotals, true);
+                            });
+        </script>
+    </body>
+</html>
