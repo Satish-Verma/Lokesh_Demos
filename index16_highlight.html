@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>My Second Angular_14</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="app/js/angular.js/angular.js"></script>
+        <style>
+            .menu-disabled-true {
+                color: gray;
+            }
+        </style>
+    </head>
+    <body ng-controller="DeathRayMenuController">
+        <div>
+            <button ng-click="toggleMenu()">Toggle Menu</button>
+            <ul ng-show="showUI">
+                <li class='menu-disabled-{{isDisabled}}' ng-click="stun()">Stun</li>
+                <li ng-click="disintegrate()">Disintegrate</li>
+                <li ng-click="erase()">Erase from History</li>
+            </ul>
+        </div>
+        <script>
+            var myAppModule = angular.module('myApp', []);
+            
+            myAppModule.controller('DeathRayMenuController', 
+                function($scope) {
+                   // var menuState;
+                    //menuState.showUI;// = false;
+                    //$scope.menuState = menuState;
+                    $scope.showUI = false;
+                    
+                    $scope.toggleMenu = function() {
+                        $scope.showUI = !$scope.showUI;
+                    };
+                    
+                    $scope.stun = function() {
+                        $scope.isDisabled = !$scope.isDisabled;
+                    };
+                });            
+        </script>
+    </body>
+</html>
