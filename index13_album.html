@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>My Second Angular_14</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="app/js/angular.js/angular.js"></script>
+    </head>
+    <body ng-controller="AlbumController">
+        <table>
+            <tr ng-repeat="track in album">
+                <td>{{$index + 1}}</td>
+                <td>{{track.name}}</td>
+                <td>{{track.duration}}</td>
+            </tr>
+        </table>
+        <script>
+            var myAppModule = angular.module('myApp', []);
+            
+            myAppModule.controller('AlbumController', 
+                function($scope) {
+                    var album = [{name: 'Mary Contrary', duration : '2:34'},
+                                    {name: 'Jack Sprat', duration: '3:21'},
+                                    {name: 'Jill Hill', duration:'17:34'}];
+                    $scope.album = album;
+                    
+                    $scope.insertTom = function() {
+                        $scope.students.splice(1, 0, {name:'Tom Thumb', duration:'4'});                        
+                    };                
+                });
+            /*var messages = {};
+            messages.someText = 'You are here';
+            function TextController($scope) {
+                $scope.messages = messages;
+            }*/
+        </script>
+    </body>
+</html>
