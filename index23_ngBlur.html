@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>My Second Angular_14</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="app/js/angular.js/angular.js"></script>
+        <style>
+            .menu-disabled-true {
+                color: gray;
+            }
+
+            .error {
+                background-color: red;
+            }
+
+            .warning {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body >
+        <div ng-app="app" ng-controller="Ctrl">
+            <div>
+                <label>field1: </label>
+                <input name="field1" ng-model="value1" my-focus="focusField1" my-blur="doneEditing1()"/>
+                <br/>
+                <label>field2</label>
+                <input name="field2" ng-model="value2" my-focus="focusField2" my-blur="doneEditing2()"/>
+                <br/>
+                <br/>
+                <span>{{countedValue}}</span>
+                <br/>
+                <br/>
+                <button type="button" ng-click="focusField1=true">focus Field1</button>
+                <button type="button" ng-click="focusField2=true">focus Field2</button>
+            </div>
+        </div>
+        <script>
+                    var app = angular.module('app', []);
+
+                    app.controller('Ctrl',
+                            function($scope) {
+                                //array of edited fields (optional)
+                                $scope.focusField1 = false;
+                                $scope.focusField2 = false;
+                                
+                                //handle method for filed1 blur
+                                $scope.doneEditing1 = function() {
+                                    $scope.countedValue = 'Blur from field1:   ' + $scope.value1 + ' * ' + $scope.value2 + ' = ' + $scope.value1 * $scope.value2;
+                                };
+                                
+                                //handle method for field2 blur
+                                $scope.doneEditing2 = function() {
+                                    $scope.countedValue = 'Blur from field2:   ' + $scope.value2 + ' * ' + $scope.value1 + ' = ' + $scope.value1 * $scope.value2;
+                                };
+                                
+                                $scope.value1 = 1;
+                                $scope.value2 = 2;
+                                
+                                $scope.countedValue = 'After blur on field change to field1 * field2';
+                            });
+                            
+                            //focus directive
+                            app.directive('myFocus', function() {
+                               return {
+                                   restrict: 'A',
+                                   link : function(scope, element, attr) {
+                                       scope.$watch(attr.myFocus, function(n, o) {
+                                           if(n != 0 && n) {
+                                               element[0].focus();
+                                           }
+                                       });
+                                   }
+                               };
+                            });
+                            
+                            //blur directive
+                            app.directive('myBlur', function() {
+                                return {
+                                    restrict : 'A',
+                                    link : function(scope, element, attr) {
+                                        element.bind('blur', function() {
+                                            //apply scope (attributes)
+                                            scope.$apply(attr.myBlur);
+                                            //return scope value for focusing to false
+                                            scope.$eval(attr.myFocus + '=false');
+                                        });
+                                    }
+                                };
+                            });
+        </script>
+    </body>
+</html>
