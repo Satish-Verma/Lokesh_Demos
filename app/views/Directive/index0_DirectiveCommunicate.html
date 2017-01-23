@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>My First Angular</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <my-tabs>
+        <my-pane title="First Pane">
+            <p>Hi, I am first pane.</p>
+        </my-pane>
+        <my-pane title="Second Pane">
+            <em>Hi, I am second pane</em>
+            <p><a href ng-click="i = i + 1">counter: {{i || 0}}</a></p>
+        </my-pane>
+    </my-tabs>
+        <script src="app/js/angular.js/angular.min.js"></script>
+        <script src="app/js/drctvComm.js"></script>
+    </body>
+</html>
